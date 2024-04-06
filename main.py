@@ -173,16 +173,13 @@ def update_status(message):
     status_bar.config(bg='#333333', fg='white')
 
 def show_about():
-    msgbox.showinfo("About", "גרסה 1.2 ,נוצר על ידי סיימון בנג'מין ולבי, ליצירת קשר  053-722-7573")
+    msgbox.showinfo("About", "גרסה 1.2")
 
 def create_gui():
     global root, site_frames, device_labels, countdown_label, scan_interval, status_bar
     root = tk.Tk()
     root.title("Network Device Monitor")
     root.configure(bg='#333333')
-
-
-
 
     site_frames = {}
     device_labels = {}
@@ -195,8 +192,6 @@ def create_gui():
     file_menu.add_command(label="Add Device", command=add_device)
     file_menu.add_command(label="Remove Device", command=remove_device)
     file_menu.add_command(label="About", command=show_about)
-
-
 
     for device in devices:
         site = device['Site']
@@ -213,10 +208,6 @@ def create_gui():
         label.pack(pady=2, padx=10, fill='x')
         device_labels[(device['name'], site)] = label
         label.bind("<Enter>", lambda e, ip=device['IP']: show_ip_tooltip(e, ip))
-
-
-
-
 
     interval_frame = tk.Frame(root, bg='#333333')
     interval_frame.pack(side=tk.TOP, pady=5)
